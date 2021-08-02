@@ -7,7 +7,7 @@
 * Creating collider programme. There are three arguments: 
 * 		obs - the number of observations
 * 		corr - the desired correlation between x and y
-* 		pc - the desired percentil cutoff for sample selection
+* 		pc - the desired percentile cutoff for sample selection
 clear
 capture program drop collider
 qui program define collider
