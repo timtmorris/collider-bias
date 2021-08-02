@@ -32,7 +32,7 @@ twoway 	(scatter x y if selected==1, mcolor(navy%20)) ///
 		(lfit x y, lcolor(black) ///
 		legend(order(1 "Selected observations" 2 "Non-selected observations" ///
 		3 "Sample association" 4 "Population association")) ///
-		ytitle("CVD (SD's)") xtitle("CMV (SD's)") ///
+		ytitle("Y variable (SD's)") xtitle("X variable (SD's)") ///
 		graphregion(color(white)))
 corr x y
 corr x y if selected==1
