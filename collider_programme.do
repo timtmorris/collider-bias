@@ -29,24 +29,27 @@ gen tot=x+y+z+e
 qui summ tot, detail
 gen selected=1 if tot<r(p`pc')
 replace selected=0 if selected==.
-twoway 	(scatter x y if selected==1, mcolor(navy%10)) ///
-		(scatter x y if selected==0, mcolor(maroon%10)) ///
+twoway 	(scatter x y if selected==0, mcolor(maroon%10)) ///
+		(scatter x y if selected==1, mcolor(navy%10)) ///
 		(lfit x y if selected==1, lcolor(black) lpattern(dash)) ///
 		(lfit x y, lcolor(black) ///
 		legend(order(1 "Selected observations" 2 "Non-selected observations" ///
 		3 "Sample association" 4 "Population association")) ///
-		ytitle("CVD (SD's)") xtitle("CMV (SD's)") ///
+		ytitle("Y (SD's)") xtitle("X (SD's)") ///
 		graphregion(color(white)))
 corr x y
 corr x y if selected==1
 end
 
 ********************************************************************************
-* EXAMPLES: 
+* EXAMPLES.
+* These examples select 5% of individuals (who score low on x and y, given some 
+* 		error) from a population of 100,000 with no	interaction effects between 
+* 		x and y on sample selection. 
 ********************************************************************************
 
 * No correlation:
-collider 10000 0 75 0 0.5
+collider 100000 0 5 0 2
 
 * Positive correlation: 
-collider 10000 0.3 75 0 0.5
+collider 100000 0.2 5 0 2
